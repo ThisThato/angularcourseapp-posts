@@ -15,6 +15,7 @@ export class UsersComponent implements OnInit {
   enableAdd: boolean = true;
   currentClasses: any = {};
   currentStyles = {};
+  showUserForm: boolean = false;
 
 
 
@@ -106,6 +107,16 @@ export class UsersComponent implements OnInit {
 
   toggleHide(user: User) {
     user.hide = !user.hide;
+  }
+
+  onSubmit(e: any) {
+    e.preventDefault();
+    console.log("...")
+  }
+
+  fireEvent(e: any) {
+    console.log(e.target.value)
+
   }
 
 }
