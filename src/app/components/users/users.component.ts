@@ -9,7 +9,7 @@ import { User } from 'src/app/models/User';
 export class UsersComponent implements OnInit {
 
   users: User[];
-  showExtended: boolean = false;
+  showExtended: boolean = true;
   loaded: boolean = true;
   //propery binding
   enableAdd: boolean = true;
@@ -44,7 +44,8 @@ export class UsersComponent implements OnInit {
           province: "Gauteng"
         },
         isActive: true,
-        registered: new Date('01/07/2021 11:45:00')
+        registered: new Date('01/07/2021 11:45:00'),
+        hide: true
       },
       {
         firstname: "Lethabo",
@@ -56,7 +57,8 @@ export class UsersComponent implements OnInit {
           province: "Limpopo"
         },
         isActive: false,
-        registered: new Date('04/01/2019 09:00:00')
+        registered: new Date('04/01/2019 09:00:00'),
+        hide: true
       },
       {
         firstname: "Joy",
@@ -67,7 +69,8 @@ export class UsersComponent implements OnInit {
           city: "Polokwane",
           province: "Limpopo"
         },
-        registered: new Date('02/02/2020 08:30:00')
+        registered: new Date('02/02/2020 08:30:00'),
+        hide: true
       },
 
     ]
@@ -100,9 +103,9 @@ export class UsersComponent implements OnInit {
     }
   }
 
-  fireEvent(e: Event) {
-    console.log("button clicked")
-    console.log(e)
+
+  toggleHide(user: User) {
+    user.hide = !user.hide;
   }
 
 }
