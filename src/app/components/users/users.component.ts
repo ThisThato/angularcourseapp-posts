@@ -11,6 +11,8 @@ export class UsersComponent implements OnInit {
   users: User[];
   showExtended: boolean = true;
   loaded: boolean = true;
+  //propery binding
+  enableAdd: boolean = true;
 
   constructor() {
     this.users = [{
@@ -21,7 +23,8 @@ export class UsersComponent implements OnInit {
         street: "",
         city: "",
         province: ""
-      }
+      },
+      image: "http://lorempixel.com/600/600/people/3"
     }];
   }
 
@@ -36,7 +39,8 @@ export class UsersComponent implements OnInit {
           street: "20 Main street",
           city: "Johannesburg",
           province: "Gauteng"
-        }
+        },
+        image: "http://lorempixel.com/600/600/people/2"
       },
       {
         firstname: "Lethabo",
@@ -46,7 +50,8 @@ export class UsersComponent implements OnInit {
           street: "20 Bombay street",
           city: "Polokwane",
           province: "Limpopo"
-        }
+        },
+        image: "http://lorempixel.com/600/600/people/1"
       },
       {
         firstname: "Chris",
@@ -56,7 +61,8 @@ export class UsersComponent implements OnInit {
           street: "20 Thabo Mbeki street",
           city: "Polokwane",
           province: "Limpopo"
-        }
+        },
+        image: "http://lorempixel.com/600/600/people/4"
       },
 
     ]

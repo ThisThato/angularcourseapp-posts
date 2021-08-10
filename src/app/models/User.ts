@@ -7,4 +7,5 @@ export interface User {
     city?: string,
     province?: string
   }
+  image?: string
 }
