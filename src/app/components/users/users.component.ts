@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { NgForm } from '@angular/forms';
 import { User } from 'src/app/models/User';
 
 @Component({
@@ -24,6 +25,10 @@ export class UsersComponent implements OnInit {
   currentClasses: any = {};
   currentStyles = {};
   showUserForm: boolean = false;
+
+  //form submit
+  @ViewChild("userForm") form: any;
+
 
 
 
@@ -109,9 +114,20 @@ export class UsersComponent implements OnInit {
     user.hide = !user.hide;
   }
 
-  onSubmit(e: any) {
-    e.preventDefault();
-    console.log("...")
+
+
+  onSubmit({ value, valid }: NgForm) {
+    if (!valid) {
+      console.log("Form is not valid")
+    } else {
+      //add user
+      value.isActive = true;
+      value.registered = new Date();
+      value.hide = true;
+      this.users.unshift(value)
+
+      this.form.reset();
+    }
   }
 
 }
