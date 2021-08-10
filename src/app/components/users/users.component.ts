@@ -17,9 +17,10 @@ export class UsersComponent implements OnInit {
   };
 
   users: User[];
-
+  data: any;
   showExtended: boolean = true;
   loaded: boolean = true;
+
 
   //propery binding
   enableAdd: boolean = false;
@@ -46,11 +47,9 @@ export class UsersComponent implements OnInit {
 
   ngOnInit() {
 
-
-    // this.addUser({
-    //   firstname: "David",
-    //   lastname: "Williams"
-    // })
+    this.dataService.getData().subscribe(data => {
+      console.log(data)
+    })
 
     this.setCurrentClasses()
     this.setCurrentStyles();
@@ -90,8 +89,6 @@ export class UsersComponent implements OnInit {
     user.hide = !user.hide;
   }
 
-
-
   onSubmit({ value, valid }: NgForm) {
     if (!valid) {
       console.log("Form is not valid")
@@ -100,7 +97,7 @@ export class UsersComponent implements OnInit {
       value.isActive = true;
       value.registered = new Date();
       value.hide = true;
-      this.users.unshift(value)
+      this.dataService.addUser(value);
 
       this.form.reset();
     }

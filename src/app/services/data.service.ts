@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
 import { User } from "../models/User"
 
 @Injectable({
@@ -7,6 +8,7 @@ import { User } from "../models/User"
 export class DataService {
 
   users: User[]
+  data: Observable<any>
 
   constructor() {
 
@@ -39,7 +41,31 @@ export class DataService {
 
   }
 
+  getData() {
+    this.data = new Observable(observer => {
+      setTimeout(() => {
+        observer.next(1);
+      }, 1000)
+
+      setTimeout(() => {
+        observer.next(2);
+      }, 2000)
+      setTimeout(() => {
+        observer.next(3);
+      }, 3000)
+      setTimeout(() => {
+        observer.next(4);
+      }, 4000)
+    })
+
+    return this.data;
+  }
+
   getUsers(): User[] {
     return this.users;
+  }
+
+  addUser(user: User) {
+    this.users.unshift(user)
   }
 }
