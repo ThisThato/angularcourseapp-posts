@@ -11,12 +11,7 @@ export class UsersComponent implements OnInit {
   user: User = {
     firstname: "",
     lastname: "",
-    age: 0,
-    address: {
-      street: "",
-      city: "",
-      province: ""
-    }
+    email: ""
   };
 
   users: User[];
@@ -36,12 +31,7 @@ export class UsersComponent implements OnInit {
     this.users = [{
       firstname: "",
       lastname: "",
-      age: 0,
-      address: {
-        street: "",
-        city: "",
-        province: ""
-      }
+      email: ""
     }];
 
   }
@@ -53,12 +43,7 @@ export class UsersComponent implements OnInit {
       {
         firstname: "John",
         lastname: "Doe",
-        age: 70,
-        address: {
-          street: "20 Main street",
-          city: "Johannesburg",
-          province: "Gauteng"
-        },
+        email: "john@gmail.com",
         isActive: true,
         registered: new Date('01/07/2021 11:45:00'),
         hide: true
@@ -66,12 +51,7 @@ export class UsersComponent implements OnInit {
       {
         firstname: "Lethabo",
         lastname: "Maja",
-        age: 20,
-        address: {
-          street: "20 Bombay street",
-          city: "Polokwane",
-          province: "Limpopo"
-        },
+        email: "lethabo@yahoo.com",
         isActive: false,
         registered: new Date('04/01/2019 09:00:00'),
         hide: true
@@ -79,12 +59,7 @@ export class UsersComponent implements OnInit {
       {
         firstname: "Joy",
         lastname: "Mantjane",
-        age: 50,
-        address: {
-          street: "20 Thabo Mbeki street",
-          city: "Polokwane",
-          province: "Limpopo"
-        },
+        email: "joy@outlook.com",
         registered: new Date('02/02/2020 08:30:00'),
         hide: true
       },
@@ -101,24 +76,19 @@ export class UsersComponent implements OnInit {
 
   }
 
-  addUser() {
+  // addUser() {
 
-    this.user.isActive = true;
-    this.user.registered = new Date();
-    //adds to the begining of the array
-    this.users.unshift(this.user)
+  //   this.user.isActive = true;
+  //   this.user.registered = new Date();
+  //   //adds to the begining of the array
+  //   this.users.unshift(this.user)
 
-    this.user = {
-      firstname: "",
-      lastname: "",
-      age: 0,
-      address: {
-        street: "",
-        city: "",
-        province: ""
-      }
-    }
-  }
+  //   this.user = {
+  //     firstname: "",
+  //     lastname: "",
+  //     email: ""
+  //   }
+  // }
 
   setCurrentClasses() {
     this.currentClasses = {
@@ -142,11 +112,6 @@ export class UsersComponent implements OnInit {
   onSubmit(e: any) {
     e.preventDefault();
     console.log("...")
-  }
-
-  fireEvent(e: any) {
-    console.log(e.target.value)
-
   }
 
 }
