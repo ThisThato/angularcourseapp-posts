@@ -9,11 +9,14 @@ import { User } from 'src/app/models/User';
 export class UsersComponent implements OnInit {
 
   users: User[];
-  showExtended: boolean = true;
+  showExtended: boolean = false;
   loaded: boolean = true;
   //propery binding
   enableAdd: boolean = true;
   currentClasses: any = {};
+  currentStyles = {};
+
+
 
   constructor() {
     this.users = [{
@@ -24,8 +27,7 @@ export class UsersComponent implements OnInit {
         street: "",
         city: "",
         province: ""
-      },
-      image: "http://lorempixel.com/600/600/people/1"
+      }
     }];
   }
 
@@ -41,8 +43,8 @@ export class UsersComponent implements OnInit {
           city: "Johannesburg",
           province: "Gauteng"
         },
-        image: "http://lorempixel.com/600/600/people/3",
-        isActive: true
+        isActive: true,
+        registered: new Date('01/07/2021 11:45:00')
       },
       {
         firstname: "Lethabo",
@@ -53,11 +55,11 @@ export class UsersComponent implements OnInit {
           city: "Polokwane",
           province: "Limpopo"
         },
-        image: "http://lorempixel.com/600/600/people/1",
-        isActive: false
+        isActive: false,
+        registered: new Date('04/01/2019 09:00:00')
       },
       {
-        firstname: "Chris",
+        firstname: "Joy",
         lastname: "Mantjane",
         age: 50,
         address: {
@@ -65,7 +67,7 @@ export class UsersComponent implements OnInit {
           city: "Polokwane",
           province: "Limpopo"
         },
-        image: "http://lorempixel.com/600/600/people/8"
+        registered: new Date('02/02/2020 08:30:00')
       },
 
     ]
@@ -76,7 +78,7 @@ export class UsersComponent implements OnInit {
     })
 
     this.setCurrentClasses()
-
+    this.setCurrentStyles();
 
   }
 
@@ -89,6 +91,18 @@ export class UsersComponent implements OnInit {
       "btn-success": this.enableAdd,
       "big-text": this.showExtended
     }
+  }
+
+  setCurrentStyles() {
+    this.currentStyles = {
+      'padding-top': this.showExtended ? '0' : '50px',
+      'font-size': this.showExtended ? '' : '25px'
+    }
+  }
+
+  fireEvent(e: Event) {
+    console.log("button clicked")
+    console.log(e)
   }
 
 }
