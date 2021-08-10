@@ -8,11 +8,24 @@ import { User } from 'src/app/models/User';
 })
 export class UsersComponent implements OnInit {
 
+  user: User = {
+    firstname: "",
+    lastname: "",
+    age: 0,
+    address: {
+      street: "",
+      city: "",
+      province: ""
+    }
+  };
+
   users: User[];
+
   showExtended: boolean = true;
   loaded: boolean = true;
+
   //propery binding
-  enableAdd: boolean = true;
+  enableAdd: boolean = false;
   currentClasses: any = {};
   currentStyles = {};
   showUserForm: boolean = false;
@@ -30,9 +43,11 @@ export class UsersComponent implements OnInit {
         province: ""
       }
     }];
+
   }
 
   ngOnInit() {
+
 
     this.users = [
       {
@@ -76,18 +91,33 @@ export class UsersComponent implements OnInit {
 
     ]
 
-    this.addUser({
-      firstname: "David",
-      lastname: "Williams"
-    })
+    // this.addUser({
+    //   firstname: "David",
+    //   lastname: "Williams"
+    // })
 
     this.setCurrentClasses()
     this.setCurrentStyles();
 
   }
 
-  addUser(user: User) {
-    this.users.push(user)
+  addUser() {
+
+    this.user.isActive = true;
+    this.user.registered = new Date();
+    //adds to the begining of the array
+    this.users.unshift(this.user)
+
+    this.user = {
+      firstname: "",
+      lastname: "",
+      age: 0,
+      address: {
+        street: "",
+        city: "",
+        province: ""
+      }
+    }
   }
 
   setCurrentClasses() {
