@@ -4,7 +4,10 @@ import { Observable } from 'rxjs';
 import { Post } from '../models/Post';
 
 const httpOptions = {
-  headers: new HttpHeaders({ 'Content-Type': 'application/json' })
+  headers: new HttpHeaders({
+    'Content-Type': 'application/json',
+    'Access-Control-Allow-Origin': 'true'
+  })
 }
 
 @Injectable({
@@ -31,7 +34,9 @@ export class PostsService {
   }
 
   getPost(id: number): Observable<Post> {
+    console.log(id)
     const url = `${this.postsUrl}/${id}`
+
     return this.http.get<Post>(url);
   }
 

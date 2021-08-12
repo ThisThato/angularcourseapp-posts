@@ -4,7 +4,7 @@
 <h2>Posts</h2>
 <div class="card mb-3" *ngFor="let post of posts">
   <div class="card-body">
-    <h3><a [routerLink]="['/post/{{post.id}}']"
+    <h3><a routerLink="/post/{{post.id}}"
         routerLinkActive="router-link-active">{{post.title}}</a></h3>
     <p>{{post.body}}</p>
     <hr>
