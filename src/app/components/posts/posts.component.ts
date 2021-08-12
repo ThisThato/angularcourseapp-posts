@@ -10,6 +10,13 @@ import { Post } from 'src/app/models/Post';
 export class PostsComponent implements OnInit {
 
   posts: Post[];
+  currentPost: Post = {
+    id: 0,
+    title: "",
+    body: ''
+  };
+
+  isEdit: boolean = false;
 
   constructor(private postService: PostsService) { }
 
@@ -21,10 +28,18 @@ export class PostsComponent implements OnInit {
 
   }
 
-
   // Add new post
   onNewPost(post: Post) {
     this.posts.unshift(post)
+  }
+
+  editPost(post: Post) {
+    this.currentPost = post;
+    this.isEdit = true;
+  }
+
+  removePost(post: Post) {
+
   }
 
 }
