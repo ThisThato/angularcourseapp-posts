@@ -38,8 +38,6 @@ export class PostsComponent implements OnInit {
     this.isEdit = true;
   }
 
-
-
   onUpdatedPost(post: Post) {
     this.posts.forEach((cur, index) => {
       if (post.id === cur.id) {
@@ -61,7 +59,6 @@ export class PostsComponent implements OnInit {
         this.posts.forEach((cur, index) => {
           if (post.id === cur.id) {
             this.posts.splice(index, 1);
-
           }
         })
       })
